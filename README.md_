@@ -1,0 +1,28 @@
+//Methods
+
+//Create blockchain
+
+let blocky = new Blockchain();
+
+//get latest block
+
+blocky.getLatestBlock()
+
+//get balance of address
+
+blocky.getBalanceOfAddress(address)
+
+//check chain validity
+blocky.minePendingTransactions(miningRewardAddress)
+
+//get a block by number
+blocky.getBlock(number)
+
+Transactions
+
+//send a transaction from one person to another
+blocky.createTransaction(new Transaction (from, to, amount))
+
+//get a list of transactions from one address
+blocky.getAddressTransactions(address)
+
