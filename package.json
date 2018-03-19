@@ -8,6 +8,20 @@
   },
   "author": "Jesus",
   "license": "MIT",
+  "jest": {
+    "verbose": true,
+    "testEnvironment": "node",
+    "collectCoverage": true,
+    "coverageDirectory": "./coverage",
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
+    }
+  },
   "dependencies": {
     "crypto-js": "^3.1.9-1",
     "body-parser": "^1.18.2",
