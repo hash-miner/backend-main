@@ -19,14 +19,20 @@ module.exports = function(router) {
       .catch(err => errorHandler(err, res));
   });
   router.get('/signin', basicAuth, (req, res) => {
+    let userInfo;
     Auth.findOne({ username: req.auth.username })
       .then(user =>
         user
           ? user.comparePasswordHash(req.auth.password)
           : Promise.reject(new Error('Authorization Failed. Username required.'))
       )
+      .then(user => userInfo = user)
       .then(user => user.generateToken())
-      .then(token => res.status(200).json(token))
+      .then(token => res.status(201).json({
+        'token': token,
+        'username': userInfo.username,
+        'user_type': userInfo.usertype
+      }))
       .catch(err => errorHandler(err, res));
   });
 };
