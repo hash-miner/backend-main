@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 const Auth = mongoose.Schema({
   username: {type: String, required: true, unique: true},
   password: {type: String, required: true},
-  usertype: {type: String, required: true},
+  user_type: {type: String, required: true},
   compareHash: {type: String, unique: true},
 }, {timestamps: true});
 
@@ -34,10 +34,9 @@ Auth.methods.comparePasswordHash = function(password) {
 
 Auth.methods.generateCompareHash = function() {
   this.compareHash = crypto.randomBytes(64).toString('hex');
-  return this.save()// vinicio - making sure the compare hash (token seed) is unique
+  return this.save()
     .then(() => Promise.resolve(this.compareHash))
-    .catch(console.error); // This line is not very robust... potential loop
-  //.catch(() => this.generateCompareHash()); // This line is not very robust... potential loop
+    .catch(console.error); 
 };
 
 Auth.methods.generateToken = function() {
