@@ -20,6 +20,7 @@ module.exports = function(router) {
   });
   router.get('/signin', basicAuth, (req, res) => {
     let userInfo;
+    console.log(req.auth);
     Auth.findOne({ username: req.auth.username })
       .then(user =>
         user
@@ -31,7 +32,7 @@ module.exports = function(router) {
       .then(token => res.status(201).json({
         'token': token,
         'username': userInfo.username,
-        'user_type': userInfo.usertype
+        'user_type': userInfo.user_type,
       }))
       .catch(err => errorHandler(err, res));
   });
