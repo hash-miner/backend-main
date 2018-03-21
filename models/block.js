@@ -11,4 +11,4 @@ const BlockSchema = mongoose.Schema({
   nonce: {type: String, required: true},
 });
 
-module.exports = mongoose.model('blockSchema', BlockSchema);
+module.exports = mongoose.model('block', BlockSchema);
