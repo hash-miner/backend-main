@@ -8,7 +8,7 @@ const Transaction = require('../lib/transactions');
 let blocky = new Blockchain()
 
 module.exports = router => {
-  router.route('/block/grower')
+  router.route('/transactions')
     .post(bodyParser, (req, res) => {
       console.log('Passing First Backend');
       console.log('body', req.body);
