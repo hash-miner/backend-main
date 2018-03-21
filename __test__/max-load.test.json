@@ -1,0 +1,46 @@
+{
+  "config": {
+    "target": "https://hm-backend-main.herokuapp.com",
+    "phases": [
+      {
+        "duration": 10,
+        "arrivalRate": 2
+      },
+      {
+        "duration": 10,
+        "arrivalRate": 200
+      }
+    ],
+    "processor": "./create-user.js"
+  },
+  "scenarios": [
+    {
+      "name": "Create Users",
+      "flow": [
+        {
+          "function": "create"
+        },
+        {
+          "post": {
+            "url": "/signup",
+            "json": {
+              "username": "{{ username }}",
+              "user_type": " {{ user_type }}",
+              "password": "{{ password }}"
+            },
+            "capture": {
+              "json": "$.token",
+              "as": "token"
+            }
+          }
+        },
+        {
+          "get": {
+            "url": "/gallery",
+            "Authorization": "Bearer {{ token }}"
+          }
+        }
+      ]
+    }
+  ]
+}

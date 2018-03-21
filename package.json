@@ -43,6 +43,7 @@
     "superagent": "^3.8.2"
   },
   "devDependencies": {
+    "faker": "^4.1.0",
     "jest": "^22.4.2"
   }
 }

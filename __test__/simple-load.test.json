@@ -1,0 +1,32 @@
+{
+  "config": {
+    "target": "https://hm-backend-main.herokuapp.com",
+    "phases": [{
+        "duration": 3,
+        "arrivalRate": 1
+      },
+      {
+        "duration": 5,
+        "arrivalRate": 10
+      }
+    ],
+    "processor": "./create-user.js"
+  },
+  "scenarios": [{
+    "name": "Create Users",
+    "flow": [{
+        "function": "create"
+      },
+      {
+        "post": {
+          "url": "/signup",
+          "json": {
+            "username": "{{ username }}",
+            "user_type": " {{ user_type }}",
+            "password": "{{ password }}"
+          }
+        }
+      }
+    ]
+  }]
+}
