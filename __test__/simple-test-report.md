@@ -1,3 +1,4 @@
+# Simple Load Test Report
 __test__ git:(hector-back-wednesday) ✗ artillery run complex-load.test.json
 Started phase 0, duration: 3s @ 11:28:24(-0700) 2018-03-21
 Started phase 1, duration: 5s @ 11:28:27(-0700) 2018-03-21
