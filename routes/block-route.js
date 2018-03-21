@@ -5,9 +5,10 @@ const bodyParser = require('body-parser').json();
 const calcServer = process.env.CALC_SERVER_ADDRESS;
 const Blockchain = require('../lib/blockchain');
 const Transaction = require('../lib/transactions');
+let blocky = new Blockchain()
 
 module.exports = router => {
-  router.route('/spike')
+  router.route('/block/grower')
     .post(bodyParser, (req, res) => {
       console.log('Passing First Backend');
       console.log('body', req.body);
@@ -16,14 +17,17 @@ module.exports = router => {
         .then(calcRes => res.sendStatus(calcRes.status));
     })
     .put(bodyParser, (req, res) => {
+      if(req.body){
+        blocky.createTransaction(new Transaction('',req.body.growerId,false,req.body.location, Date.now(), req.body.batchId,req.body.growerId, req.body.weight ,req.body.location));
+      }
+      res.sendStatus(200)
       console.log('Hit the put route');
-      console.log('body', req.body);
-      let blocky = new Blockchain()
       // console.log();
-      console.log('blocky', blocky);
+      // console.log('blocky :');
+
       // res.send(blocky)
-      superagent.post(`${calcServer}/calc`)
-        .send(blocky)
-        .then(calcRes => res.sendStatus(calcRes.status));
+      // superagent.post(`${calcServer}/calc`)
+      //   .send(blocky)
+      //   .then(calcRes => res.sendStatus(calcRes.status));
     });
 };
