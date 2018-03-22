@@ -9,14 +9,14 @@ let blocky = new Blockchain()
 
 module.exports = router => {
   router.route('/transactions')
-    .post(bodyParser, (req, res) => {
+    .put(bodyParser, (req, res) => {
       console.log('Passing First Backend');
       console.log('body', req.body);
       superagent.post(`${calcServer}/calc`)
         .send(req.body)
         .then(calcRes => res.sendStatus(calcRes.status));
     })
-    .put(bodyParser, (req, res) => {
+    .post(bodyParser, (req, res) => {
       if(req.body){
         blocky.createTransaction(new Transaction('',req.body.growerId,false,req.body.location, Date.now(), req.body.batchId,req.body.growerId, req.body.weight ,req.body.location));
       }
