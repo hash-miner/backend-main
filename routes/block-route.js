@@ -17,6 +17,7 @@ module.exports = router => {
         .then(calcRes => res.sendStatus(calcRes.status));
     })
     .post(bodyParser, (req, res) => {
+      console.log(req.body, 'request')
       if(req.body){
         blocky.createTransaction(new Transaction(null, req.body.growerId, false, req.body.location, Date.now(), req.body.timestamp, req.body.batchId, req.body.growerId, null, req.body.batchWeight, req.body.growerLocation, req.body.distributorId, req.body.itemId, req.body.distributorLocation, req.body.itemWeight, null, req.body.retailerId, null, false));
       }
