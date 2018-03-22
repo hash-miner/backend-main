@@ -9,10 +9,7 @@ describe('Block Module', function() {
       expect(block).toBeInstanceOf(Block);
     });
     it('should return a hash value', function() {
-      expect(block.calculateHash()).toEqual('247c4e2d7dc0bfe13d4d16f410fb09166b456b9b8a86f227716f668dbf92d7b1');
-    });
-    it('should return undefined as method uses default return', function() {
-      expect(block.mineBlock(2)).toEqual(undefined);
+      expect(block.calculateHash()).toEqual('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855');
     });
   });
 });
